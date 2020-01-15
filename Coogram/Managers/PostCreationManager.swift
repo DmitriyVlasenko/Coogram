@@ -9,4 +9,10 @@
 import UIKit
  class PostCreationManager {
     static var shared = PostModel()
+    private init() {}
+}
+extension PostCreationManager: NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        return self
+    }
 }

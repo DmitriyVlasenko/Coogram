@@ -14,6 +14,7 @@ final class StepsInReceiptCell : UITableViewCell , ImagePickerDelegate, UITextVi
     @IBOutlet weak var AddImageButton: UIButton!
     func didSelect(image: UIImage?) {
         self.ReceiptImage.image = image
+        self.AddImageButton.alpha = 0
     }
     func build(presentingvc: UIViewController) {
         self.imagepicker = ImagePicker(presentationController: presentingvc, delegate: self)

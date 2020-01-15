@@ -8,17 +8,16 @@
 
 import UIKit
 final class AddImageViewController : UIViewController {
-    var postToCreate : PostModel = PostModel()
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var receiptNameTextField: UITextField!
     var imagePicker : ImagePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-        postToCreate = PostModel()
-    }
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)    }
     @IBAction func BackButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true) {}
+        PostCreationManager.shared.mainImage  = nil
+        PostCreationManager.shared.receiptName = nil
     }
     @IBAction func NextButtonTapped(_ sender: UIButton) {
        
@@ -35,8 +34,8 @@ final class AddImageViewController : UIViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true, completion: nil)
-            PostCreationManager.shared.mainImage  = mainImage.image
-            PostCreationManager.shared.receiptName = receiptNameTextField.text
+        PostCreationManager.shared.mainImage  = mainImage.image
+        PostCreationManager.shared.receiptName = receiptNameTextField.text
 //        }
     }
 

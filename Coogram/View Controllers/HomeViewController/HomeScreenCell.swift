@@ -11,7 +11,8 @@ final class HomeScreenCell : UITableViewCell {
     @IBOutlet weak var postName: UILabel!
     
     @IBOutlet weak var profileImage: UIImageView!
-    
+    var isliked : Bool = false
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var mainImage: UIImageView!
     
     func configure(text : String,profilepic : UIImageView,mainpic: UIImageView){
@@ -21,5 +22,17 @@ final class HomeScreenCell : UITableViewCell {
         self.profileImage.layer.cornerRadius = 25
         self.mainImage.image = mainpic.image
         self.mainImage.layer.cornerRadius = 25
+    }
+    @IBAction func LikeButtonTapped(_ sender: UIButton) {
+        
+        if isliked
+         {
+            self.likeButton.tintColor = .white
+            self.isliked = false
+         }
+         else {
+            self.likeButton.tintColor = .red
+            self.isliked = true
+        }
     }
 }
