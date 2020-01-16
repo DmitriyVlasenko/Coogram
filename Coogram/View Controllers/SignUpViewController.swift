@@ -37,11 +37,12 @@ final class SignUpViewController : UIViewController {
                         let user = Auth.auth().currentUser
                         let myUser = User(id: user!.uid, name: username, posts: nil, profilePhoto: nil)
                         self.db.collection("Users").addDocument(data: ["Id": myUser.id, "Username" : username])
-                        let storageref = Storage.storage().reference()
+                        let storageref = Storage.storage().reference()  
                         let usersStorageRef = storageref.child("users/")
                         let userPersonalFolderRef = usersStorageRef.child("\(String(describing: user!.uid))/")
                         let finishingReference = userPersonalFolderRef.child("defaultPhoto.png")
                         finishingReference.putData((UIImage(systemName: "photo")?.pngData())!, metadata: nil) { (metadata, error) in
+                            
                         }
                         if let vc = self.storyboard?.instantiateViewController(identifier: "TabBarController"){
                         vc.modalPresentationStyle = .fullScreen

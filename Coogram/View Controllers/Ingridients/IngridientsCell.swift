@@ -18,6 +18,10 @@ final class IngridientsCell : UITableViewCell, UIPickerViewDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return title[row]
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedPicker = title[row]
+    }
+    var selectedPicker : String = "шт"
     @IBOutlet weak var ingridientName: UITextField!
     @IBOutlet weak var ingridientCount: UITextField!
     var title : [String] = []

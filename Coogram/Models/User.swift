@@ -12,5 +12,4 @@ struct User {
     var name: String
     var posts : [PostModel]?
     var profilePhoto : UIImage?
-    
 }

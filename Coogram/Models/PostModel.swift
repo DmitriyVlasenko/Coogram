@@ -9,23 +9,26 @@
 import UIKit
 struct ingridient {
     var name : String?
-    var count : Int?
+    var count : String?
     var typeOfCounting: String?
 }
 struct descriptionStep {
     var image : UIImage?
-    var description : String
+    var description : String?
+    var imageURL : URL?
 }
 struct PostModel {
     
     var mainImage : UIImage?
     var receiptName : String?
-    var properties : [properties]?
+    var properties : [String]? = []
     var description : String?
-    var cookingTime : [Int]?
-    var calories : Int?
-    var ingridients: [ingridient]?
-    var descriptiomSteps: [descriptionStep]?
-    var imagesUrl : [URL]?
-    var date : Date?
+    var hours : String?
+    var minutes : String?
+    var calories : String?
+    var ingridients: [ingridient]? = []
+    var descriptionSteps: [descriptionStep]? = []
+    var imagesUrl : [URL]? = []
+    var creationDate : TimeInterval?
+    var mainImageUrl : URL?
 }

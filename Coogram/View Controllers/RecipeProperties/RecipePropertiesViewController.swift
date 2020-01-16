@@ -24,18 +24,32 @@ final class RecipePropertiesViewController : UIViewController {
     @IBAction func NextButtonTapped(_ sender: UIButton) {
         for i in 0...RecipePropertiesViewController.propertiesList.count - 1 {
             for y in 0...RecipePropertiesViewController.propertiesList[i].properties.count - 1 {
-                print(RecipePropertiesViewController.propertiesList[i].properties[y].isSelected)
-                print(RecipePropertiesViewController.propertiesList[i].properties[y].checkboxlabel)
+                if (RecipePropertiesViewController.propertiesList[i].properties[y].isSelected) {
+                    PostCreationManager.shared.properties?.append(RecipePropertiesViewController.propertiesList[i].properties[y].checkboxlabel)
+                }
             }
         }
-        let vc = self.storyboard!.instantiateViewController(identifier: "IngridientsViewController")
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        if let hours = hoursTextField.text, let minutes = minutesTextField.text, let description = DescriptionTextView.text, let calories = caloriesTextField.text {
+            PostCreationManager.shared.calories = calories
+            PostCreationManager.shared.description = description
+            PostCreationManager.shared.hours = hours
+            PostCreationManager.shared.minutes = minutes
+            let vc = self.storyboard!.instantiateViewController(identifier: "IngridientsViewController")
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+
+        }
+
         
     }
     @IBAction func backButtonTapped(_ sender: UIButton) {
+        PostCreationManager.shared.calories = nil
+        PostCreationManager.shared.description = nil
+        PostCreationManager.shared.hours = nil
+        PostCreationManager.shared.minutes = nil
+        PostCreationManager.shared.properties = []
         self.dismiss(animated: true) {
-
+            
         }
     }
 }

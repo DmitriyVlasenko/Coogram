@@ -8,14 +8,15 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 import Firebase
 import FirebaseFirestoreSwift
 import FirebaseStorage
 final class StepsInReceiptViewController: UIViewController {
     var stepscount = 1
+    var collectionOfCells : Set<StepsInReceiptCell> = []
     override func viewDidLoad() {
     super.viewDidLoad()
-    
     }
 
     @IBOutlet weak var StepsTableView: UITableView!
@@ -27,6 +28,11 @@ final class StepsInReceiptViewController: UIViewController {
 
     }
     @IBAction func PostButtonTapped(_ sender: UIButton) {
+        PostCreationManager.shared.creationDate = Date().timeIntervalSince1970
+        collectionOfCells.forEach { (cell) in
+            PostCreationManager.shared.descriptionSteps
+        }
+        
         self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
         
     }
@@ -50,9 +56,58 @@ extension StepsInReceiptViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StepsInReceiptCell", for: indexPath) as! StepsInReceiptCell
         cell.build(presentingvc: self)
+        collectionOfCells.insert(cell)
         return cell
     }
-    
-    
+    func uploadImagesInStorage(images : [UIImage], mainImage : UIImage, completion : @escaping (() -> Void )) {
+        if let user = Auth.auth().currentUser {
+        let storageref = Storage.storage().reference()
+        let usersStorageRef = storageref.child("users/")
+        let userPersonalFolderRef = usersStorageRef.child("\(String(describing: user.uid))/")
+        let mainImageRef = userPersonalFolderRef.child("\(self.makeUniqueID()).png")
+            let uploaddataMainImage = mainImage.pngData()
+            mainImageRef.putData(uploaddataMainImage!, metadata: nil) { (metadata, error) in
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                else {
+                mainImageRef.downloadURL { (url, error) in
+                    PostCreationManager.shared.imagesUrl?.append(url!)
+                    for image in images {
+                        let finalReference = userPersonalFolderRef.child("\(self.makeUniqueID()).png")
+                        if let uploadData = image.pngData() {
+                        finalReference.putData(uploadData, metadata: nil) { (metadata, error) in
+                            if let err = error {
+                                print(err.localizedDescription)
+                            }
+                            else {
+                                finalReference.downloadURL { (url, error) in
+                                    if let err = error {
+                                        print(err.localizedDescription)
+                                    }
+                                    else {
+                                        PostCreationManager.shared.imagesUrl?.append(url!)
+                                        if PostCreationManager.shared.imagesUrl!.count + 1 == PostCreationManager.shared.descriptionSteps?.count {
+                                            completion()
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                        }
+                    }
+                }
+                }
+            }
+            
+        }
+    }
 }
 
+
+extension NotificationCenter {
+   static var PostToFirebase : NSNotification.Name {
+        return NSNotification.Name("PostToFirebase")
+    }
+}

@@ -16,5 +16,3 @@ struct properties {
     var properties : [property]
 }
 
-  //let propertiesList : [properties] = [properties(checkBoxesLabels: ["Нарезать","Взбивать","Варить","Тушить","Гриль","Мангал","Жарить"], sectionTitle: "Методы приготовления"),properties(checkBoxesLabels: ["Любой","Правильное питание","Диабетичиские рецепты","Детское питание","Низкокалорийные рецепты"], sectionTitle: "Тип питания"),properties(checkBoxesLabels: ["Завтрак","Обед","Ужин","Любое"], sectionTitle: "Время приема пищи")]
-

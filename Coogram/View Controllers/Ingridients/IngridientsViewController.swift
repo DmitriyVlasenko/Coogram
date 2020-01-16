@@ -21,9 +21,14 @@ final class IngridientsViewController : UIViewController {
         ingridientsTableView.reloadData()
     }
     @IBAction func BackButtonTapped(_ sender: UIButton) {
+        PostCreationManager.shared.ingridients? = []
         self.dismiss(animated: false, completion: nil)
+        
     }
     @IBAction func NextButtonTapped(_ sender: UIButton) {
+        collectionOfCells.forEach { (cell) in
+            PostCreationManager.shared.ingridients?.append(ingridient(name: cell.ingridientName.text, count: cell.ingridientCount.text, typeOfCounting: cell.selectedPicker))
+        }
         let vc = self.storyboard!.instantiateViewController(identifier: "StepsInReceiptViewController")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
