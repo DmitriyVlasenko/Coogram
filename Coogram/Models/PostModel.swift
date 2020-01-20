@@ -15,10 +15,11 @@ struct ingridient {
 struct descriptionStep {
     var image : UIImage?
     var description : String?
-    var imageURL : URL?
+    var imageURL : String?
+    var step : Int?
 }
 struct PostModel {
-    
+    var user: String?
     var mainImage : UIImage?
     var receiptName : String?
     var properties : [String]? = []
@@ -28,7 +29,6 @@ struct PostModel {
     var calories : String?
     var ingridients: [ingridient]? = []
     var descriptionSteps: [descriptionStep]? = []
-    var imagesUrl : [URL]? = []
     var creationDate : TimeInterval?
-    var mainImageUrl : URL?
+    var mainImageUrl : String?
 }

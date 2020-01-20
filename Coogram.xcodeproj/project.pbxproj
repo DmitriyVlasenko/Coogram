@@ -34,6 +34,8 @@
 		FFA8EF9223CE84B8007FAEED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8EF9123CE84B8007FAEED /* LoginViewController.swift */; };
 		FFA8EF9423CE86AB007FAEED /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8EF9323CE86AB007FAEED /* SignUpViewController.swift */; };
 		FFA8EF9723CECBCA007FAEED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8EF9623CECBCA007FAEED /* User.swift */; };
+		FFAD844823D22B220001F127 /* ReceiptStepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD844723D22B220001F127 /* ReceiptStepsModel.swift */; };
+		FFAD844A23D3B9C10001F127 /* IngridientsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD844923D3B9C10001F127 /* IngridientsCellModel.swift */; };
 		FFBA3BA923BFED7500B9FB45 /* RecipePropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA3BA823BFED7500B9FB45 /* RecipePropertiesViewController.swift */; };
 		FFBA3BAC23BFF81D00B9FB45 /* SelectPropertiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA3BAB23BFF81D00B9FB45 /* SelectPropertiesCell.swift */; };
 		FFBA3BAE23BFFD4100B9FB45 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA3BAD23BFFD4100B9FB45 /* Properties.swift */; };
@@ -72,6 +74,8 @@
 		FFA8EF9123CE84B8007FAEED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FFA8EF9323CE86AB007FAEED /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FFA8EF9623CECBCA007FAEED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FFAD844723D22B220001F127 /* ReceiptStepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptStepsModel.swift; sourceTree = "<group>"; };
+		FFAD844923D3B9C10001F127 /* IngridientsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientsCellModel.swift; sourceTree = "<group>"; };
 		FFBA3BA823BFED7500B9FB45 /* RecipePropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePropertiesViewController.swift; sourceTree = "<group>"; };
 		FFBA3BAB23BFF81D00B9FB45 /* SelectPropertiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPropertiesCell.swift; sourceTree = "<group>"; };
 		FFBA3BAD23BFFD4100B9FB45 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			children = (
 				FF96A6B823C79D1700499609 /* IngridientsViewController.swift */,
 				FF96A6BA23C7A17400499609 /* IngridientsCell.swift */,
+				FFAD844923D3B9C10001F127 /* IngridientsCellModel.swift */,
 			);
 			path = Ingridients;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			children = (
 				FF96A6BF23CA3D2F00499609 /* StepsInReceiptViewController.swift */,
 				FF96A6C323CA43DD00499609 /* StepsInReceiptCell.swift */,
+				FFAD844723D22B220001F127 /* ReceiptStepsModel.swift */,
 			);
 			path = StepsInReceipt;
 			sourceTree = "<group>";
@@ -361,8 +367,10 @@
 				FF96A6C223CA3D5100499609 /* CustomizationUiButtonExtension.swift in Sources */,
 				FF6B73C723A010E6006B168E /* AddImageViewController.swift in Sources */,
 				FF6B7396239DBE6E006B168E /* HomeScreenCell.swift in Sources */,
+				FFAD844823D22B220001F127 /* ReceiptStepsModel.swift in Sources */,
 				FF96A6C423CA43DD00499609 /* StepsInReceiptCell.swift in Sources */,
 				FFA8EF9023CE404E007FAEED /* UniqueIdentifierExtension.swift in Sources */,
+				FFAD844A23D3B9C10001F127 /* IngridientsCellModel.swift in Sources */,
 				FF6B7398239DBE81006B168E /* HomeScreenCellModel.swift in Sources */,
 				FF6B7394239D9BE5006B168E /* TabBarController.swift in Sources */,
 				FF96A6B923C79D1700499609 /* IngridientsViewController.swift in Sources */,

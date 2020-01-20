@@ -7,25 +7,14 @@
 //
 
 import UIKit
-final class StepsInReceiptCell : UITableViewCell , ImagePickerDelegate, UITextViewDelegate {
+final class StepsInReceiptCell : UITableViewCell {
     @IBOutlet weak var textViewDescription: UITextView!
-    var imagepicker : ImagePicker!
     @IBOutlet weak var ReceiptImage: UIImageView!
     @IBOutlet weak var AddImageButton: UIButton!
-    func didSelect(image: UIImage?) {
-        self.ReceiptImage.image = image
-        self.AddImageButton.alpha = 0
-    }
-    func build(presentingvc: UIViewController) {
-        self.imagepicker = ImagePicker(presentationController: presentingvc, delegate: self)
+    func build() {
         AddImageButton.alignTextBelow()
         textViewDescription.makeBorders()
-        textViewDescription.delegate = self
     }
     
-    @IBAction func AddImageTapped(_ sender: UIButton) {
-        self.imagepicker.present(from: sender)
-        
-    }
     }
 

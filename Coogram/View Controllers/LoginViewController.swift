@@ -23,7 +23,6 @@ final class LoginViewController : UIViewController {
                     print(err.localizedDescription)
                 }
                 else {
-                    print("logged in")
                     if let vc = self.storyboard?.instantiateViewController(identifier: "TabBarController"){
                         vc.modalPresentationStyle = .fullScreen
                         self.present(vc, animated: true, completion: nil)

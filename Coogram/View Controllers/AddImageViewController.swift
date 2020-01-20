@@ -13,7 +13,8 @@ final class AddImageViewController : UIViewController {
     var imagePicker : ImagePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imagePicker = ImagePicker(presentationController: self, delegate: self)    }
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+    }
     @IBAction func BackButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true) {}
         PostCreationManager.shared.mainImage  = nil
@@ -40,14 +41,15 @@ final class AddImageViewController : UIViewController {
     }
 
     @IBAction func SelectImage(_ sender: UIButton) {
-        self.imagePicker.present(from: sender)
+        self.imagePicker.present(from: sender, index: nil)
     }
 }
 
 extension AddImageViewController : ImagePickerDelegate {
-    func didSelect(image: UIImage?) {
-        self.mainImage.image = image
+    func didSelect(image: UIImage?, index: IndexPath?) {
+        if let image = image {self.mainImage.image = image}
     }
+    
     
     
 }

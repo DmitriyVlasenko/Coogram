@@ -22,24 +22,28 @@ final class RecipePropertiesViewController : UIViewController {
     @IBOutlet weak var caloriesTextField: UITextField!
     
     @IBAction func NextButtonTapped(_ sender: UIButton) {
-        for i in 0...RecipePropertiesViewController.propertiesList.count - 1 {
-            for y in 0...RecipePropertiesViewController.propertiesList[i].properties.count - 1 {
-                if (RecipePropertiesViewController.propertiesList[i].properties[y].isSelected) {
+        
+        if  hoursTextField.text != "", minutesTextField.text != "", DescriptionTextView.text != "",    caloriesTextField.text != "" {
+            PostCreationManager.shared.calories = caloriesTextField.text
+            PostCreationManager.shared.description = DescriptionTextView.text
+            PostCreationManager.shared.hours = hoursTextField.text
+            PostCreationManager.shared.minutes = minutesTextField.text
+            for i in 0...RecipePropertiesViewController.propertiesList.count - 1 {
+                for y in 0...RecipePropertiesViewController.propertiesList[i].properties.count - 1 {
+                    if (RecipePropertiesViewController.propertiesList[i].properties[y].isSelected) {
                     PostCreationManager.shared.properties?.append(RecipePropertiesViewController.propertiesList[i].properties[y].checkboxlabel)
+                    }
                 }
             }
-        }
-        if let hours = hoursTextField.text, let minutes = minutesTextField.text, let description = DescriptionTextView.text, let calories = caloriesTextField.text {
-            PostCreationManager.shared.calories = calories
-            PostCreationManager.shared.description = description
-            PostCreationManager.shared.hours = hours
-            PostCreationManager.shared.minutes = minutes
             let vc = self.storyboard!.instantiateViewController(identifier: "IngridientsViewController")
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
 
         }
 
+        else {
+            //alert
+        }
         
     }
     @IBAction func backButtonTapped(_ sender: UIButton) {

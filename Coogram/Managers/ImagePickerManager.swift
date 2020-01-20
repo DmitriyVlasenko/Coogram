@@ -7,7 +7,7 @@
 //
 import UIKit
 public protocol ImagePickerDelegate: class {
-    func didSelect(image: UIImage?)
+    func didSelect(image: UIImage?, index : IndexPath?)
 }
 
 open class ImagePicker: NSObject {
@@ -15,7 +15,7 @@ open class ImagePicker: NSObject {
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
-
+    private var index : IndexPath?
     public init(presentationController: UIViewController, delegate: ImagePickerDelegate) {
         self.pickerController = UIImagePickerController()
 
@@ -40,8 +40,9 @@ open class ImagePicker: NSObject {
         }
     }
     
-    public func present(from sourceView: UIView) {
-
+    public func present(from sourceView: UIView, index: IndexPath?) {
+        
+        self.index = index
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if let action = self.action(for: .camera, title: "Сделать фото") {
@@ -68,7 +69,7 @@ open class ImagePicker: NSObject {
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true, completion: nil)
         
-        self.delegate?.didSelect(image: image)
+        self.delegate?.didSelect(image: image, index: index)
     }
 }
 

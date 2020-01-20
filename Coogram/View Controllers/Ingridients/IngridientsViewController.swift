@@ -9,15 +9,24 @@
 import UIKit
 final class IngridientsViewController : UIViewController {
     var pickerdata = ["шт","г","кг","мл","л"]
-    var cellscount = 1
-    var collectionOfCells : Set<IngridientsCell> = []
+    var model : [IngridientsCellModel] = [IngridientsCellModel()]
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     @IBOutlet weak var ingridientsTableView: UITableView!
     
+    @IBAction func NameTextFieldDidChange(_ sender: UITextField) {
+        let cell = sender.superview?.superview as! IngridientsCell
+        let indexpath = ingridientsTableView.indexPath(for: cell)
+        model[indexpath!.row].ingridientName = sender.text
+    }
+    @IBAction func CountTextFieldChanged(_ sender: UITextField) {
+        let cell = sender.superview?.superview as! IngridientsCell
+        let indexpath = ingridientsTableView.indexPath(for: cell)
+        model[indexpath!.row].ingridientCount = sender.text
+    }
     @IBAction func AddIngridient(_ sender: UIButton) {
-        cellscount += 1
+        model.append(IngridientsCellModel())
         ingridientsTableView.reloadData()
     }
     @IBAction func BackButtonTapped(_ sender: UIButton) {
@@ -26,8 +35,8 @@ final class IngridientsViewController : UIViewController {
         
     }
     @IBAction func NextButtonTapped(_ sender: UIButton) {
-        collectionOfCells.forEach { (cell) in
-            PostCreationManager.shared.ingridients?.append(ingridient(name: cell.ingridientName.text, count: cell.ingridientCount.text, typeOfCounting: cell.selectedPicker))
+        for i in 0...model.count-1 {
+            PostCreationManager.shared.ingridients?.append(ingridient(name: model[i].ingridientName, count: model[i].ingridientCount, typeOfCounting: model[i].typeOfCounting))
         }
         let vc = self.storyboard!.instantiateViewController(identifier: "StepsInReceiptViewController")
         vc.modalPresentationStyle = .fullScreen
@@ -38,15 +47,32 @@ final class IngridientsViewController : UIViewController {
 extension IngridientsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IngridientsCell", for: indexPath) as! IngridientsCell
-        cell.build(title: pickerdata)
-        collectionOfCells.insert(cell)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellscount
+        return model.count
     }
 }
-extension IngridientsViewController : UITextFieldDelegate {
 
+extension IngridientsViewController : UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let cell = pickerView.superview?.superview as! IngridientsCell
+        let indexpath = ingridientsTableView.indexPath(for: cell)
+        model[indexpath!.row].typeOfCounting = pickerdata[row]
+    }
+}
+
+extension IngridientsViewController : UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerdata[row]
+    }
+    
 }
