@@ -36,7 +36,7 @@ final class IngridientsViewController : UIViewController {
     }
     @IBAction func NextButtonTapped(_ sender: UIButton) {
         for i in 0...model.count-1 {
-            PostCreationManager.shared.ingridients?.append(ingridient(name: model[i].ingridientName, count: model[i].ingridientCount, typeOfCounting: model[i].typeOfCounting))
+            PostCreationManager.shared.ingridients?.append(ingridient(name: model[i].ingridientName, count: model[i].ingridientCount, typeOfCounting: model[i].typeOfCounting, position : i))
         }
         let vc = self.storyboard!.instantiateViewController(identifier: "StepsInReceiptViewController")
         vc.modalPresentationStyle = .fullScreen

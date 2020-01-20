@@ -11,6 +11,8 @@ struct ingridient {
     var name : String?
     var count : String?
     var typeOfCounting: String?
+    var position : Int?
+    
 }
 struct descriptionStep {
     var image : UIImage?

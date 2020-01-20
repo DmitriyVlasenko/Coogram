@@ -142,8 +142,6 @@ extension StepsInReceiptViewController {
             steps.updateValue(post.descriptionSteps![i].step!, forKey: "Step")
             stepsToDatabase.updateValue(steps, forKey: "Step \(i+1)")
         }
-        print(stepsToDatabase)
-        
         docData.updateValue(stepsToDatabase, forKey: "DescSteps")
         docData.updateValue(post.hours!, forKey: "Hours")
         docData.updateValue(post.minutes!, forKey: "Minutes")
@@ -155,9 +153,9 @@ extension StepsInReceiptViewController {
             ingridients.updateValue(post.ingridients![i].count!, forKey: "Count")
             ingridients.updateValue(post.ingridients![i].name!, forKey: "Name")
             ingridients.updateValue(post.ingridients![i].typeOfCounting!, forKey: "TypeOfCounting")
+            ingridients.updateValue(post.ingridients![i].position!, forKey: "Position")
             ingridientsToDatabase.updateValue(ingridients, forKey: "Ingridient \(i+1)")
         }
-        print(ingridientsToDatabase)
         docData.updateValue(ingridientsToDatabase, forKey: "Ingridients")
         docData.updateValue(post.receiptName!, forKey: "ReceiptName")
         return docData
