@@ -18,7 +18,7 @@ final class StepsInReceiptViewController: UIViewController {
     var imagepicker : ImagePicker!
     override func viewDidLoad() {
     super.viewDidLoad()
-        imagepicker = ImagePicker(presentationController: self, delegate: self)
+    imagepicker = ImagePicker(presentationController: self, delegate: self)
     }
 
     @IBOutlet weak var StepsTableView: UITableView!
@@ -70,6 +70,10 @@ extension StepsInReceiptViewController : UITextViewDelegate {
         StepsTableView.reloadData()
     }
 }
+
+
+
+
 extension StepsInReceiptViewController : UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return receiptStepsModel.count
@@ -78,6 +82,9 @@ extension StepsInReceiptViewController : UITableViewDelegate {
         return "Шаг \(section + 1)"
     }
 }
+
+
+
 extension StepsInReceiptViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -100,10 +107,12 @@ extension StepsInReceiptViewController : UITableViewDataSource {
 }
 
 
+
 extension StepsInReceiptViewController : ImagePickerDelegate {
     func didSelect(image: UIImage?, index: IndexPath?) {
         if let index = index {
             if let image = image {
+            // TODO : Alert vc
             receiptStepsModel[index.section][0].image = image
             receiptStepsModel[index.section][0].isButtonHidden = true
             StepsTableView.reloadData()
@@ -118,7 +127,10 @@ extension StepsInReceiptViewController : ImagePickerDelegate {
         
     }
     
+
+
 extension StepsInReceiptViewController {
+    // TODO : refactor to encode 
     func convertDataToDictionary(post: PostModel)  -> Dictionary<String, Any>{
         var docData = Dictionary<String, Any>()
         struct dataToFirestoreSteps {

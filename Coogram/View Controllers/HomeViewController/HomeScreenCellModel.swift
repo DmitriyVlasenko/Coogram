@@ -7,8 +7,8 @@
 //
 import UIKit
 struct HomeScreenCellModel {
-    var mainImage : UIImageView
+    var mainImage : UIImage
     var text : String
-    var profileimage : UIImageView
+    var profileimage : UIImage
     var isLiked : Bool = false
 }

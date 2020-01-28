@@ -35,7 +35,7 @@ final class SignUpViewController : UIViewController {
                     else {
                         
                         let user = Auth.auth().currentUser
-                        let myUser = User(id: user!.uid, name: username, posts: nil, profilePhoto: nil)
+                        let myUser = User(id: user!.uid, posts: nil, profilePhoto: nil, username: username)
                         self.db.collection("Users").addDocument(data: ["Id": myUser.id, "Username" : username])
                         let storageref = Storage.storage().reference()  
                         let usersStorageRef = storageref.child("users/")

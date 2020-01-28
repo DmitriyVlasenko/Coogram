@@ -12,7 +12,6 @@ struct ingridient {
     var count : String?
     var typeOfCounting: String?
     var position : Int?
-    
 }
 struct descriptionStep {
     var image : UIImage?
@@ -22,6 +21,8 @@ struct descriptionStep {
 }
 struct PostModel {
     var user: String?
+    var username : String?
+    var profileImage : UIImage?
     var mainImage : UIImage?
     var receiptName : String?
     var properties : [String]? = []

@@ -30,6 +30,7 @@ final class LoginViewController : UIViewController {
                 }
             }
         }
+        
             }
     @IBAction func RegistrationButtonTapped(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(identifier: "SignUpViewController")

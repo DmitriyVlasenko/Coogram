@@ -9,7 +9,9 @@
 import UIKit
 struct User {
     let id : String
-    var name: String
+    var name: String?
     var posts : [PostModel]?
     var profilePhoto : UIImage?
+    var description : String?
+    var username : String
 }
