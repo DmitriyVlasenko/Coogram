@@ -133,21 +133,12 @@ extension StepsInReceiptViewController {
     // TODO : refactor to encode 
     func convertDataToDictionary(post: PostModel)  -> Dictionary<String, Any>{
         var docData = Dictionary<String, Any>()
-        struct dataToFirestoreSteps {
-            var urlToImage : URL
-            var descripstion : String
-            var step : Int
-        }
-        struct dataToFirestoreIngridients {
-            var typeOfCounting : String
-            var ingridientName : String
-            var ingridientCount : String
-        }
         var steps = Dictionary <String , Any>()
         var stepsToDatabase = Dictionary <String , Any>()
         docData.updateValue(post.calories!, forKey : "Calories")
         docData.updateValue(post.creationDate!, forKey: "CreationDate")
         docData.updateValue(post.description!, forKey: "Description")
+        docData.updateValue(post.properties!, forKey: "properties")
         for i in 0...post.descriptionSteps!.count - 1 {
             steps.updateValue(post.descriptionSteps![i].description!, forKey: "Description")
             steps.updateValue(post.descriptionSteps![i].imageURL!, forKey: "URL")

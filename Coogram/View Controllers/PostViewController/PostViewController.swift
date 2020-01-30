@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 final class PostViewController : UIViewController {
     var postData: PostModel!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -21,16 +22,38 @@ final class PostViewController : UIViewController {
     @IBOutlet weak var stepsTableView: SelfSizedTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainImageView.image = postData.mainImage
+        mainImageView.sd_setImage(with: URL(string: postData.mainImageUrl!), placeholderImage: UIImage(systemName: "photo"), options: .progressiveLoad, completed: nil)
         receiptNameLabel.text = postData.receiptName
         usernameLabel.text = postData.username
-        hoursLabel.text = "\(String(describing: postData.hours)) часов"
-        minutesLabel.text = "\(String(describing: postData.minutes)) минут"
+        hoursLabel.text = "\(String(describing: postData.hours!)) часов"
+        minutesLabel.text = "\(String(describing: postData.minutes!)) минут"
         caloriesLabel.text = postData.calories
         decriptionTextView.text = postData.description
-        if let image = postData.profileImage {
-            userImage.image = image
+        if let url = postData.profileImageURL {
+            userImage.sd_setImage(with: URL(string: url), placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
         }
+        else {
+            userImage.image = UIImage(systemName: "person.fill")
+        }
+       
+    }
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        // TODO: REWORK FROM HARDCODE
+        super.viewWillAppear(animated)
+        var heightForSteps = 0
+        for _ in 0...postData.descriptionSteps!.count - 1 {
+            heightForSteps += 400
+        }
+        var heightForIngridients = 0
+        for _ in 0...postData.ingridients!.count - 1 {
+            heightForIngridients += 30
+        }
+        stepsTableView.heightAnchor.constraint(equalToConstant: CGFloat(heightForSteps)).isActive = true
+        ingridientsTableView.heightAnchor.constraint(equalToConstant: CGFloat(heightForIngridients)).isActive = true
+
     }
     @IBOutlet weak var collectionlayout: UICollectionViewFlowLayout!{
         didSet {
@@ -50,18 +73,17 @@ extension PostViewController : UITableViewDataSource, UITableViewDelegate {
             return 0
         }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableView {
         case ingridientsTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostIngridientTableViewCell", for: indexPath) as! PostIngridientTableViewCell
-            cell.IngridientLabel.text = "\(String(describing: postData.ingridients![indexPath.row].name))  \(String(describing: postData.ingridients![indexPath.row].count)) \(String(describing: postData.ingridients![indexPath.row].typeOfCounting))"
+            cell.IngridientLabel.text = "\(String(describing: postData.ingridients![indexPath.row].name!))  \(String(describing: postData.ingridients![indexPath.row].count!)) \(String(describing: postData.ingridients![indexPath.row].typeOfCounting!))"
             return cell
         case stepsTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostDescriptionTableViewCell", for: indexPath) as! PostDescriptionTableViewCell
             cell.stepDescription.text = postData.descriptionSteps![indexPath.row].description
-            cell.stepImageView.image = postData.descriptionSteps![indexPath.row].image
-            return cell
+            cell.stepImageView.sd_setImage(with: URL(string: postData.descriptionSteps![indexPath.row].imageURL!), placeholderImage: nil, options: .progressiveLoad)
+                        return cell
         default:
             return UITableViewCell()
         }

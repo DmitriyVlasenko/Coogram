@@ -23,6 +23,7 @@ struct PostModel {
     var user: String?
     var username : String?
     var profileImage : UIImage?
+    var profileImageURL : String?
     var mainImage : UIImage?
     var receiptName : String?
     var properties : [String]? = []

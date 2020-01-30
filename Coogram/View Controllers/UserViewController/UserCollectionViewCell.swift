@@ -11,4 +11,5 @@ final class UserCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var receipNameLabel: UILabel!
 }

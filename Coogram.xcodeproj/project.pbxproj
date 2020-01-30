@@ -12,6 +12,7 @@
 		FF2C32A223DA16FC0028592A /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C32A123DA16FC0028592A /* UserCollectionViewCell.swift */; };
 		FF2C32A423DA1EFB0028592A /* PostIngridientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C32A323DA1EFB0028592A /* PostIngridientTableViewCell.swift */; };
 		FF2C32A623DA1F330028592A /* PostDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C32A523DA1F330028592A /* PostDescriptionTableViewCell.swift */; };
+		FF2C32F623E275640028592A /* UserPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C32F523E275640028592A /* UserPropertiesViewController.swift */; };
 		FF42485C23BAAEB80003C00F /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42485B23BAAEB80003C00F /* ImagePickerManager.swift */; };
 		FF69877723CB937900DAE9E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF69877623CB937900DAE9E1 /* GoogleService-Info.plist */; };
 		FF6B737C239D8E6E006B168E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6B737B239D8E6E006B168E /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		FF2C32A123DA16FC0028592A /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF2C32A323DA1EFB0028592A /* PostIngridientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostIngridientTableViewCell.swift; sourceTree = "<group>"; };
 		FF2C32A523DA1F330028592A /* PostDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		FF2C32F523E275640028592A /* UserPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPropertiesViewController.swift; path = "../../../../../Library/Autosave Information/UserPropertiesViewController.swift"; sourceTree = "<group>"; };
 		FF42485B23BAAEB80003C00F /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		FF69877623CB937900DAE9E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF6B7378239D8E6E006B168E /* Coogram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coogram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,14 @@
 			path = UserViewController;
 			sourceTree = "<group>";
 		};
+		FF2C32F423E2753A0028592A /* UserPropertiesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C32F523E275640028592A /* UserPropertiesViewController.swift */,
+			);
+			path = UserPropertiesViewController;
+			sourceTree = "<group>";
+		};
 		FF42485A23BAAE890003C00F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +192,7 @@
 		FF6B738F239D8E86006B168E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C32F423E2753A0028592A /* UserPropertiesViewController */,
 				FF2C329E23DA15230028592A /* UserViewController */,
 				FFAD844F23D8F7440001F127 /* PostViewController */,
 				FFA8EF9123CE84B8007FAEED /* LoginViewController.swift */,
@@ -290,7 +301,7 @@
 				FF6B7374239D8E6E006B168E /* Sources */,
 				FF6B7375239D8E6E006B168E /* Frameworks */,
 				FF6B7376239D8E6E006B168E /* Resources */,
-				BB3AF3FFE89C320487DAFBB3 /* [CP] Embed Pods Frameworks */,
+				A025B7FFAE0CDF5E398C438F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,7 +385,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB3AF3FFE89C320487DAFBB3 /* [CP] Embed Pods Frameworks */ = {
+		A025B7FFAE0CDF5E398C438F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +423,7 @@
 				FFAD844A23D3B9C10001F127 /* IngridientsCellModel.swift in Sources */,
 				FF6B7398239DBE81006B168E /* HomeScreenCellModel.swift in Sources */,
 				FFAD845323D8F87F0001F127 /* PostCollectionViewCell.swift in Sources */,
+				FF2C32F623E275640028592A /* UserPropertiesViewController.swift in Sources */,
 				FF6B7394239D9BE5006B168E /* TabBarController.swift in Sources */,
 				FF96A6B923C79D1700499609 /* IngridientsViewController.swift in Sources */,
 				FF6B737C239D8E6E006B168E /* AppDelegate.swift in Sources */,
